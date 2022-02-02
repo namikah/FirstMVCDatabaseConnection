@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,16 @@
             </div>
         </nav>
     </header>
-        @RenderBody()
-    <footer></footer>
+    @RenderBody()
+    <footer style="background-color:black; padding:50px 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="footer-copyright col-12 text-center" style="color:white; line-height:50px;">
+                    <p  style="color:red;">My homework task about connection database with MVC</p>
+                    <p  style="color:white;">Namik Heydarov © 2022. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

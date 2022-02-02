@@ -24,7 +24,7 @@ namespace FirstMVCDatabaseConnection.Controllers
             var products = _appDbContext.Products.Include(x => x.Category).ToList();
             var categories = _appDbContext.Categories.ToList();
 
-            return View(new HomeViewModels
+            return View(new HomeViewModel
             {
                 Products = products,
                 Categories = categories

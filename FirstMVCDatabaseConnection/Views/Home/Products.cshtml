@@ -3,7 +3,7 @@
     ViewData["Title"] = "Products";
 }
 
-<body style="background-color:cadetblue; color:navajowhite;">
+<main style="background-color: antiquewhite; color: red; height: 100vh;">
     <h1>Products</h1>
 
     @model List<Product>
@@ -21,16 +21,15 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <th scope="row">@item.Id</th>
-                <td>@item.Name</td>
-                <td>@item.Price</td>
-                <td>@item.Count</td>
-                <td>@item.Category</td>
-            </tr>
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>@item.Count</td>
+                    <td>@item.Category</td>
+                </tr>
             }
         </tbody>
     </table>
-
-</body>
+</main>
 

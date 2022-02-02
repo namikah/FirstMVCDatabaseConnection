@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FirstMVCDatabaseConnection.ViewModels
 {
-    public class HomeViewModels
+    public class HomeViewModel
     {
         public ICollection<Category> Categories { get; set; }
         public ICollection<Product> Products { get; set; }
