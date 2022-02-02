@@ -1,5 +1,6 @@
 ﻿using FirstMVCDatabaseConnection.DataAccessLayer;
 using FirstMVCDatabaseConnection.Models;
+using FirstMVCDatabaseConnection.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,7 +21,14 @@ namespace FirstMVCDatabaseConnection.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var products = _appDbContext.Products.Include(x => x.Category).ToList();
+            var categories = _appDbContext.Categories.ToList();
+
+            return View(new HomeViewModels
+            {
+                Products = products,
+                Categories = categories
+            });
         }
 
         public IActionResult Products()
@@ -34,16 +42,16 @@ namespace FirstMVCDatabaseConnection.Controllers
             //    new Product(5,"Headphone",2.50,100, new Category(1,"Accessories")),
             //};
 
-            var productList = _appDbContext.Products.Include(x => x.Category).ToList();
+            var products = _appDbContext.Products.Include(x => x.Category).ToList();
 
-            return View(productList);
+            return View(products);
         }
 
         public IActionResult Categories()
         {
-            var categoryList = _appDbContext.Categories.ToList();
+            var categories = _appDbContext.Categories.ToList();
 
-            return View(categoryList);
+            return View(categories);
         }
     }
 }

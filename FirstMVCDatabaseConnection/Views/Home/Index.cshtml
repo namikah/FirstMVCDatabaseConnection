@@ -3,7 +3,51 @@
     ViewData["Title"] = "Index";
 }
 
-<body style="background-color:skyblue; color:black;">
-    <h1>Index</h1>
-</body>
+<body style="background-color:cadetblue; color:navajowhite;">
 
+    @model HomeViewModels
+        <h1>Products Table</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>@item.Count</td>
+                        <td>@item.Category</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h1>Categories Table</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Categories)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </body>
