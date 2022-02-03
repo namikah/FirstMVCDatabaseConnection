@@ -21,28 +21,21 @@ namespace FirstMVCDatabaseConnection.Controllers
 
         public IActionResult Index()
         {
-            var products = _appDbContext.Products.Include(x => x.Category).ToList();
+            var products = _appDbContext.Products.Include(x => x.Category).Include(x=>x.Country).ToList();
             var categories = _appDbContext.Categories.ToList();
+            var Countries = _appDbContext.Country.ToList();
 
             return View(new HomeViewModel
             {
                 Products = products,
-                Categories = categories
+                Categories = categories,
+                Countries = Countries
             });
         }
 
         public IActionResult Products()
         {
-            //var productList = new List<Product>
-            //{
-            //    new Product(1,"Mouse",2.50,100, new Category(1,"Accessories")),
-            //    new Product(2,"Notebook",2,1000, new Category(2,"Computers")),
-            //    new Product(3,"Iphone X",4,100, new Category(3,"Phones")),
-            //    new Product(4,"Tv",2.50,100, new Category(4,"Electronics")),
-            //    new Product(5,"Headphone",2.50,100, new Category(1,"Accessories")),
-            //};
-
-            var products = _appDbContext.Products.Include(x => x.Category).ToList();
+            var products = _appDbContext.Products.Include(x => x.Category).Include(x => x.Country).ToList();
 
             return View(products);
         }
@@ -52,6 +45,13 @@ namespace FirstMVCDatabaseConnection.Controllers
             var categories = _appDbContext.Categories.ToList();
 
             return View(categories);
+        }
+
+        public IActionResult Countries()
+        {
+            var Countries = _appDbContext.Country.ToList();
+
+            return View(Countries);
         }
     }
 }

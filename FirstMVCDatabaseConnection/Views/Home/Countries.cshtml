@@ -1,22 +1,18 @@
 ﻿
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Countries";
 }
 
 <main style="background-color: antiquewhite; color: red;">
-    <h1>Products</h1>
+    <h1>Countries</h1>
 
-    @model List<Product>
+    @model List<Country>
 
     <table class="table"  style="margin:auto;">
         <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Category</th>
-                <th scope="col">Made in</th>
             </tr>
         </thead>
         <tbody>
@@ -25,10 +21,6 @@
                 <tr>
                     <th scope="row">@item.Id</th>
                     <td>@item.Name</td>
-                    <td>@item.Price</td>
-                    <td>@item.Quantity</td>
-                    <td>@item.Category</td>
-                    <td>@item.Country</td>
                 </tr>
             }
         </tbody>

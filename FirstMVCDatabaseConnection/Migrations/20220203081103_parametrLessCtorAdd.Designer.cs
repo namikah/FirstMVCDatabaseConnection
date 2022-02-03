@@ -4,14 +4,16 @@ using FirstMVCDatabaseConnection.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FirstMVCDatabaseConnection.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220203081103_parametrLessCtorAdd")]
+    partial class parametrLessCtorAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,21 +36,6 @@ namespace FirstMVCDatabaseConnection.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("FirstMVCDatabaseConnection.Models.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Country");
-                });
-
             modelBuilder.Entity("FirstMVCDatabaseConnection.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -59,7 +46,7 @@ namespace FirstMVCDatabaseConnection.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CountryId")
+                    b.Property<int>("Count")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -68,14 +55,9 @@ namespace FirstMVCDatabaseConnection.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("CountryId");
 
                     b.ToTable("Products");
                 });
@@ -86,21 +68,10 @@ namespace FirstMVCDatabaseConnection.Migrations
                         .WithMany("Products")
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("FirstMVCDatabaseConnection.Models.Country", "Country")
-                        .WithMany("Products")
-                        .HasForeignKey("CountryId");
-
                     b.Navigation("Category");
-
-                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("FirstMVCDatabaseConnection.Models.Category", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("FirstMVCDatabaseConnection.Models.Country", b =>
                 {
                     b.Navigation("Products");
                 });

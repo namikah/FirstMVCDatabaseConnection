@@ -13,22 +13,30 @@ namespace FirstMVCDatabaseConnection.Models
 
         public double Price { get; set; }
 
-        public int Count { get; set; }
+        public int Quantity { get; set; }
 
         public Category Category { get; set; }
 
-        //public Product(int id, string name, double price, int count, Category category)
-        //{
-        //    Id = id;
-        //    Name = name;
-        //    Price = price;
-        //    Count = count;
-        //    Category = category;
-        //}
+        public Country Country { get; set; }
+
+        public Product()
+        {
+
+        }
+
+        public Product(int id, string name, double price, int quantity, Category category, Country country)
+        {
+            Id = id;
+            Name = name;
+            Price = price;
+            Quantity = quantity;
+            Category = category;
+            Country= country;
+        }
 
         public override string ToString()
         {
-            return $"{Id} {Name} {Price} {Count} {Category.Name}";
+            return $"{Id} {Name} {Price} {Quantity} {Category.Name}";
         }
     }
 }

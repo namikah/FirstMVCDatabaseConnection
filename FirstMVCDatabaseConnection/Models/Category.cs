@@ -13,11 +13,16 @@ namespace FirstMVCDatabaseConnection.Models
 
         public ICollection<Product> Products { get; set; }
 
-        //public Category(int id, string name)
-        //{
-        //    Id = id;
-        //    Name = name;
-        //}
+        public Category()
+        {
+
+        }
+
+        public Category(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
 
         public override string ToString()
         {

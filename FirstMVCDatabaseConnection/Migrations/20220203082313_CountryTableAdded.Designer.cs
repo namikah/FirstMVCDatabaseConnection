@@ -4,14 +4,16 @@ using FirstMVCDatabaseConnection.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FirstMVCDatabaseConnection.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220203082313_CountryTableAdded")]
+    partial class CountryTableAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,7 +89,7 @@ namespace FirstMVCDatabaseConnection.Migrations
                         .HasForeignKey("CategoryId");
 
                     b.HasOne("FirstMVCDatabaseConnection.Models.Country", "Country")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CountryId");
 
                     b.Navigation("Category");
@@ -96,11 +98,6 @@ namespace FirstMVCDatabaseConnection.Migrations
                 });
 
             modelBuilder.Entity("FirstMVCDatabaseConnection.Models.Category", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("FirstMVCDatabaseConnection.Models.Country", b =>
                 {
                     b.Navigation("Products");
                 });
